@@ -1,0 +1,22 @@
+version: "3"
+services:
+  memcached:
+    image: memcached:1.6-alpine
+    ports:
+      - "11211:11211"
+    restart: always
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    restart: always
+  redis:
+    image: redis:5.0-alpine
+    ports:
+      - "6379:6379"
+    restart: always
