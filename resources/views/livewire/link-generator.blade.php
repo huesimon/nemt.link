@@ -1,7 +1,8 @@
 <div x-data="{showButton: @entangle('resultUrl')}" class="flex flex-col items-center mt-24">
     <div class="flex flex-row justify-center w-2/3 mb-4">
 
-        <input class="focus:outline-none focus:ring focus:border-blue-300 bg-gray-400 w-full text-6xl text-center"
+        <input
+            class="focus:outline-none focus:ring focus:border-blue-300 bg-gray-400 w-full text-2xl md:text-5xl lg:text-6xl text-center"
             name="url" wire:model="inputUrl" />
 
     </div>

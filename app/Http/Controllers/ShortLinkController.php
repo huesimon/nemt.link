@@ -14,7 +14,11 @@ class ShortLinkController extends Controller
      */
     public function index()
     {
-        //
+        $allLinks = ShortLink::all();
+
+        return view('link.dashboard', [
+            'allLinks' => $allLinks
+        ]);
     }
 
     /**
