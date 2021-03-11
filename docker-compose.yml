@@ -2,11 +2,13 @@ version: "3"
 services:
   memcached:
     image: memcached:1.6-alpine
+    container_name: mem-${APP_NAME}
     ports:
       - "11211:11211"
     restart: always
   mysql:
     image: mysql:5.7
+    container_name: db-${APP_NAME}
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}
@@ -17,6 +19,7 @@ services:
     restart: always
   redis:
     image: redis:5.0-alpine
+    container_name: redis-${APP_NAME}
     ports:
       - "6379:6379"
     restart: always

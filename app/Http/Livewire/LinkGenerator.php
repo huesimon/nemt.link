@@ -8,7 +8,7 @@ use Livewire\Component;
 class LinkGenerator extends Component
 {
     public $inputUrl = null;
-    public $resultUrl = 'Result';
+    public $resultUrl = false;
 
     public $count = 0;
 
