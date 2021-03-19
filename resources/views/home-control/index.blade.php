@@ -69,81 +69,18 @@
     <main class="flex justify-center">
         <div id="content" class="flex flex-col space-y-4">
             <div class="flex flex-col mt-8">
-                <label for="text" class="block text-sm font-medium text-gray-700">Text to speech</label>
-                <div class="mt-1 relative rounded-md shadow-sm">
-                    <input type="text" name="text" id="text"
-                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md"
-                        placeholder="Text here">
-                    <div class="absolute inset-y-0 right-0 flex items-center">
-                        <div class="inline-block">
-                            <button type="button"
-                                class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-r-md  bg-blue-500 hover:bg-blue-600 hover:shadow-lg">Send</button>
-                        </div>
-                    </div>
-                </div>
-                <div id="recent-texts" class="mt-4 ml-3">
-                    <ul class="">
-                        <li>
-                            <span class="font-semibold">12:30 | </span>
-                            <span class="">Simon: hey</span>
-                        </li>
-                        <li>
-                            <span class="font-semibold">12:30 | </span>
-                            <span class="">Simon: hey</span>
-                        </li>
-                        <li>
-                            <span class="font-semibold">12:30 | </span>
-                            <span class="">Simon: hey</span>
-                        </li>
-                    </ul>
-                </div>
+                @livewire('text-to-speech-button')
+
+                @livewire('text-to-speech-list')
             </div>
             <div id="upload-file" class="">
-                <label for="text" class="block text-sm font-medium text-gray-700">Display on TV</label>
-                <div class="flex flex-col items-center flex-grow mb-3">
-                    <label
-                        class="w-full flex flex-col items-center px-4 py-6 bg-blue-400 uppercase rounded-lg cursor-pointer hover:bg-blue hover:text-white">
-                        <span class="mt-2 text-base leading-normal">Select a file</span>
-                        <input type='file' class="hidden" />
-                    </label>
-                </div>
-                <div id="recent-images" class="grid grid-cols-3 gap-4 mt-4">
-                    <div class="bg-blue-300 h-20 w-20"></div>
-                    <div class="bg-blue-300 h-20 w-20"></div>
-                    <div class="bg-blue-300 h-20 w-20"></div>
-                    <div class="bg-blue-300 h-20 w-20"></div>
-                    <div class="bg-blue-300 h-20 w-20"></div>
-                    <div class="bg-blue-300 h-20 w-20"></div>
-                </div>
+                @livewire('file-upload-button')
+                @livewire('recent-files-list')
             </div>
-            <div id="change-color" class="">
-                <label for="text" class="block text-sm font-medium text-gray-700">Change light color</label>
-                <div class="flex items-center justify-between">
-                    <select name="color" id="color">
-                        <option class="bg-red-500" value="red">Red</option>
-                        <option class="bg-blue-500" value="blue">Blue</option>
-                        <option class="bg-green-500" value="green">Green</option>
-                        <option class="bg-yellow-500" value="yellow">Yellow</option>
-                        <option class="bg-pink-500" value="pink">Pink</option>
+            @livewire('color-select-form')
 
-                    </select>
-                    <div class="inline-block">
-                        <button type="button"
-                            class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-r-md  bg-blue-500 hover:bg-blue-600 hover:shadow-lg">Change</button>
-                    </div>
-                </div>
-            </div>
-            <div id="recent-colors" class="grid grid-cols-6 gap-4 mt-4">
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-                <div class="bg-blue-300 h-8 w-8 rounded-full"></div>
-            </div>
+            @livewire('recent-colors-list')
+
         </div>
 
         </div>
