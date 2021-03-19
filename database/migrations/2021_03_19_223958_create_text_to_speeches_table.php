@@ -17,6 +17,7 @@ class CreateTextToSpeechesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->index();
             $table->string('text');
+            $table->dateTime('published_at')->nullable();
             $table->timestamps();
         });
     }

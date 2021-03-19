@@ -19,6 +19,7 @@ class TextToSpeechButton extends Component
             'text' => $this->text
         ]);
 
+        $this->emit('textAdded');
         $this->text = '';
     }
 
