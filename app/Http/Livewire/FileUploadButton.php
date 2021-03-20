@@ -3,8 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\PhotoUpload;
+use App\Notifications\ImageUploaded;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -22,17 +24,18 @@ class FileUploadButton extends Component
          /** @var $photo TemporaryUploadedFile */
         // dd($this->photos);
         foreach ($this->photos as $photo) {
-            $stored = $photo->storeAs('photos', $photo->getClientOriginalName());
-            // dd($stored, $photo->getFilename());
-            PhotoUpload::create([
+            $storage = Storage::putFile('photos', $photo);
+            $photo = PhotoUpload::create([
                 'user_id' => Auth::user()->id,
                 'original_filename' => $photo->getClientOriginalName(),
-                // 'hash_name' => $photo->get,
+                // 'hash_name' => $storage,
+                'path' => $storage,
                 'mime_type' => $photo->getMimeType(),
             ]);
+             $this->emit('photoAdded');
+            Auth::user()->notify(new ImageUploaded(Auth::user(), $photo));
         }
-        $this->emit('photoAdded');
-
+       
         session()->flash('message', 'Photos successfully displayed.');
     }
 

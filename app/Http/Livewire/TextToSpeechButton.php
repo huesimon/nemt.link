@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\TextToSpeech;
+use App\Notifications\TextSent;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -20,6 +21,7 @@ class TextToSpeechButton extends Component
         ]);
 
         $this->emit('textAdded');
+        $user->notify(new TextSent($user, $this->text));
         $this->text = '';
     }
 
