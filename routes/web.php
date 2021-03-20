@@ -22,13 +22,13 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/control', function () {
+Route::get('/dashboard', function () {
     return view('home-control.index');
 })->middleware(['auth']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 
 Route::resources([
