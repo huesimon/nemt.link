@@ -22,7 +22,7 @@ class TextSent extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, String $text)
+    public function __construct(?User $user, String $text)
     {
         $this->user = $user;
         $this->text = $text;
@@ -47,7 +47,7 @@ class TextSent extends Notification
             // Optional recipient user id.
             ->to(env('TELEGRAM_CHAT_ID'))
             // Markdown supported.
-            ->content($this->user->name . ": " .$this->text);
+            ->content($this->user->name ?? 'new user' . ": " .$this->text);
     }
 
     /**
