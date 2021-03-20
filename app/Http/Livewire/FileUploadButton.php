@@ -31,6 +31,7 @@ class FileUploadButton extends Component
                 'mime_type' => $photo->getMimeType(),
             ]);
         }
+        $this->emit('photoAdded');
 
         session()->flash('message', 'Photos successfully displayed.');
     }

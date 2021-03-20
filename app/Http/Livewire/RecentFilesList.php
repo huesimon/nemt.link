@@ -8,11 +8,11 @@ use Livewire\Component;
 class RecentFilesList extends Component
 {
     public $photos = [];
-    protected $listeners = ['' => 'refreshList'];
+    protected $listeners = ['photoAdded' => 'refreshList'];
 
     public function refreshList()
     {
-        $this->photos = PhotoUpload::viewable()->orderByDesc('published_at')->limit(5)->get();
+        $this->photos = PhotoUpload::viewable()->orderByDesc('created_at')->limit(5)->get();
     }
 
     public function render()
