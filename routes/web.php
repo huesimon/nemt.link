@@ -24,7 +24,7 @@ Route::get('/welcome', function () {
 
 Route::get('/control', function () {
     return view('home-control.index');
-});
+})->middleware(['auth']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
