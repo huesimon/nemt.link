@@ -36,7 +36,9 @@ class TextToSpeech extends Model
      */
     public function scopeViewable($query)
     {
-        return $query->where('published_at', '<', now())
-        ->where('user_id', '!=', Auth::user()->id)->orWhere('user_id', '=', Auth::user()->id);
+        return $query
+        ->where('published_at', '<', now())
+        ->where('user_id', '!=', Auth::user()->id)
+        ->orWhere('user_id', '=', Auth::user()->id);
     }
 }

@@ -15,13 +15,13 @@ class TextToSpeechButton extends Component
     {
         $user = Auth::user();
 
-        TextToSpeech::create([
+        $tts = TextToSpeech::create([
             'user_id' => $user->id,
             'text' => $this->text
         ]);
 
         $this->emit('textAdded');
-        $user->notify(new TextSent($user, $this->text));
+        $user->notify(new TextSent($user, $tts->id . ":" . $this->text));
         $this->text = '';
     }
 

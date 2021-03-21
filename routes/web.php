@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ShortLinkController;
+use App\Models\PhotoUpload;
+use App\Models\TextToSpeech;
+use App\Notifications\ImageUploaded;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +23,20 @@ Route::get('/', function () {
 
 Route::get('/welcome', function () {
     return view('welcome');
+});
+
+Route::get('/text/{id}', function ($id) {
+    $text = TextToSpeech::find($id);
+    $text->published_at = now();
+    $text->save();
+    dd($text);
+});
+
+Route::get('/image/{id}', function ($id) {
+    $image = PhotoUpload::find($id);
+    $image->published_at = now();
+    $image->save();
+    dd($image);
 });
 
 Route::get('/dashboard', function () {

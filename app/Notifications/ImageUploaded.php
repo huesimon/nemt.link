@@ -43,9 +43,10 @@ class ImageUploaded extends Notification
 
     public function toTelegram($notifiable)
     {
+
         return TelegramFile::create()
             ->to(env('TELEGRAM_CHAT_ID'))
-            ->content($this->user->name)
+            ->content($this->user->name . " photoid: " . $this->photo->id)
             ->document($this->photo->path, $this->photo->original_filename);
     }
 
