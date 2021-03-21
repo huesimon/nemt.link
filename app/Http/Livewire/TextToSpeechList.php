@@ -13,7 +13,7 @@ class TextToSpeechList extends Component
     
     public function refreshList()
     {
-        $this->textList = TextToSpeech::viewable()->orderByDesc('published_at')->limit(5)->get();
+        $this->textList = TextToSpeech::viewable()->orderByDesc('created_at')->limit(5)->get();
     }
 
     public function render()
