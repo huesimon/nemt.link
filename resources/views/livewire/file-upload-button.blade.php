@@ -11,7 +11,7 @@
         x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"
         x-on:livewire-upload-progress="progress = $event.detail.progress">
         <div class="w-full mt-2 p-2 bg-blue-500 rounded-lg text-center cursor-pointer border border-dashed border-gray-500"
-            @click="$refs.fileInput.click()">Upload Image</div>
+            @click="$refs.fileInput.click()">Display on TV</div>
         <input x-ref="fileInput" type="file" multiple wire:model="photos" class="hidden" />
 
         <!-- Progress Bar -->
@@ -21,7 +21,7 @@
     </div>
     @if ($photos)
     <button wire:loading.remove wire:click.prevent="save"
-        class="w-full bg-green-500 mt-2 p-2 rounded shadow-lg">Save</button>
+        class="w-full bg-green-500 mt-2 p-2 rounded shadow-lg">Show</button>
     <button wire:loading wire:target="save" class="w-full p-2 text-white rounded shadow-lg">
         <i class="fas fa-spinner fa-spin text-2xl"></i>
     </button>
