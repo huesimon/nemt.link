@@ -29,7 +29,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-        // Notification::route('telegram', 'telegram')->notify(new TextSent(null, json_encode($input)));
+        Notification::route('telegram', 'telegram')->notify(new TextSent(null, json_encode($input)));
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
