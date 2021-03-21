@@ -47,7 +47,7 @@ class TextSent extends Notification
             // Optional recipient user id.
             ->to(env('TELEGRAM_CHAT_ID'))
             // Markdown supported.
-            ->content($this->user->name ?? 'new user' . ": " .$this->text);
+            ->content(($this->user->name ?? 'new user'). ": " .$this->text);
     }
 
     /**
