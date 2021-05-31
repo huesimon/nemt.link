@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\URL;
 
 class ShortLink extends Model
@@ -16,4 +17,11 @@ class ShortLink extends Model
     {
         return URL::to('/r/' . $this->short_url);
     }
+
+    public function getRedirectResponse()
+    {
+        return new RedirectResponse($this->url);
+    }
+
+
 }
